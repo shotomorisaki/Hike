@@ -90,11 +90,14 @@ void Interface::chooseByDifficulty(HikeList& HList, MemberList& MList, Reservati
 
 void Interface::chooseByPrice(HikeList& HList, MemberList& MList, Reservations& reservations)
 {
-    //you cant call a function using HikeList::printbyprice() need a HikeList obj like so..
+    //edited
     HList.printByPrice();
-    cout << "Would you like to reserve? (y/n)" << endl;
-    //you cant cin an obj of type reservation the compiler does not know how to do this.
-    cin >> userSelection;
+    cout << endl;
+ 
+    cout << "Would you like to make a reservation? (y/n) ";
+    cin >> reservationsOrNot;
+    
+    cout << endl;
     askToReserve(HList, MList, reservations);
 }
 
@@ -159,14 +162,18 @@ void Interface::makeReservation(HikeList& HList, MemberList& MList, Reservations
 
 void Interface::askToReserve(HikeList& HList, MemberList& MList, Reservations& Reserve)
 {
-    char c;
-    cout << "Would you like to make a reservation? (y/n)";
-    cin >> c;
-
-    if (c == 'y')
+    //edited
+    if (reservationsOrNot == 'y')
     {
         makeReservation(HList, MList, Reserve);
     }
+    else if (reservationsOrNot == 'n')
+    {
+        cout << "Press any key to continue . . .";
+        
+
+    }
+    //cout << "Which hike would you like to reserve (hike name)?"
 }
 
 int Interface::askIfMember(MemberList& MList)
