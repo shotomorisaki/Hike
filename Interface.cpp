@@ -178,9 +178,10 @@ void Interface::askToReserve(HikeList& HList, MemberList& MList, Reservations& R
 
 int Interface::askIfMember(MemberList& MList)
 {
-    cout << "Are you a member? (y/n)" << endl;
+    //edited
+     cout << "Are you a member? (y/n) ";
     cin >> memberOrNot;
-
+    cout << endl;
     if (memberOrNot == 'y') {
         cout << "What is your Member ID number? " << endl;
         cin >> memberID;
@@ -192,11 +193,10 @@ int Interface::askIfMember(MemberList& MList)
     }
 
     else {
-        
+
         return addNewMember(MList);
     }
-
-   
+ 
 }
 
 
