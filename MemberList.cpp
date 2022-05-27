@@ -1,20 +1,22 @@
+//fixed the errors (atakan)
+
 /*
     Team Morisaki
-
     Claude, Austin // member 1
     Morisaki, Shoto // member 2
     Mustafa Atakan Tan // member 3
-
     Spring 2022
     CS A250 - C++ 2
     Project: Hiking in the US
 */
 
 //This is signed by Atakan part
+#include "Interface.h"
 #include "MemberList.h"
-#include "Hike.h"
 #include <iostream>
 #include <algorithm>
+
+
 using namespace std;
 
 MemberList::MemberList()
@@ -26,6 +28,7 @@ void MemberList::addMember(const string& firstName, const string& lastName)
 {
     Member newMember(firstName, lastName);
     int memberID = MEMBER_ID;
+    //could not figure out a way to use std::rbegin() here
     if (ptrToSet->empty())
     {
         newMember.setID(memberID);
@@ -65,12 +68,11 @@ int MemberList::getPoints(int memberID) {
 
 void MemberList::printMember(int memberID, string lastName) {
     auto iter = find_if(ptrToSet->begin(), ptrToSet->end(), [memberID](const Member& elem) {
-        // elem.print();
+         elem.print();
         return (elem.getMemberID() == memberID);
         });
-    // cout << iter->getLastName() << ", ";
-    cout << "\tPoints available: " << iter->getPoints();
-    cout << "\t Membership # " << iter->getMemberID();
+    
+    cout << "\t Membership # " << iter->getMemberID() << endl;
 }
 void MemberList::clearList() {
     delete ptrToSet;
