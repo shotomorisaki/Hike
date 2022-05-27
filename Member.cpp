@@ -1,10 +1,8 @@
 /*
     Team Morisaki
-
     Claude, Austin // member 1
     Morisaki, Shoto // member 2
     Mustafa Atakan Tan // member 3
-
     Spring 2022
     CS A250 - C++ 2
     Project: Hiking in the US
@@ -14,32 +12,31 @@
 #include "Member.h"
 #include <string>
 #include <iostream>
+#include <iomanip>
+
 using namespace std;
 
 Member::Member()
 {
-    int memberID = 0;
+    
     string firstName;
     string lastName;
-    int points = 0;
+
 }
 
 Member::Member(string fName, string lName)
 {
     firstName = fName;
     lastName = lName;
-}
-
-bool Member::operator<(const Member& rightMember)const
-{
-    return memberID < rightMember.memberID;
+    memberID = 0;
+    points = 0;
 }
 
 void Member::addPoints(int val)
 {
     points += val;
 }
-
+//Accessor functions
 void Member::setID(int id)
 {
     memberID = id;
@@ -57,6 +54,11 @@ string Member::getLastName() const
 int Member::getPoints() const
 {
     return points;
+}
+
+bool Member::operator<(const Member& rightMember)const
+{
+    return memberID < rightMember.memberID;
 }
 
 void Member::print() const
