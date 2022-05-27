@@ -1,3 +1,5 @@
+//fixed the errors (atakan)
+
 /*
     Team Morisaki
     Claude, Austin // member 1
