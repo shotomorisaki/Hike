@@ -28,6 +28,7 @@ public:
 
     int getMemberID() const;
     std::string getLastName() const;
+    std::string getFirstName() const;
     int getPoints() const;
 
     bool operator<(const Member& rightMember)const;
