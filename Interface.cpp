@@ -143,37 +143,24 @@ void Interface::cancelReservation(HikeList& HList, MemberList& MList, Reservatio
 
 void Interface::makeReservation(HikeList& HList, MemberList& MList, Reservations& Reserve)
 {
-    askIfMember(MList);
-    cout << "Which hike would you like to reserve (hike name)? ";
-    string n;
-    cin >> n;
+    int memberID = askIfMember(MList);
 
-    HList.printByHikeName(n);
-    HList.getPrice(n);
-    MList.getPoints(MList.getMemberID());
-    // cout << "\tDiscounted price using points: " << price << endl;
-    // Reserve.printReservation(MList.getMemberID(), HList, MList);
-    cout << endl;
-    
-    Reserve.addReservation(MList.getMemberID(), n);
-    cout << "\tBefore processing, please make a note of your reservation number. " << endl;
-    cout << "\t Reservation #: " << MList.getMemberID() << endl;
+    cout << "Please make a selection: " << endl;
+    string location;
+    cin >> location;
+
+    HList.printByHikeName(location);
+    HList.getPrice(location);
+    MList.getPoints(memberID);
+    Reserve.addReservation(MList.getMemberID(), location);
 }
-
-/*
-Ask user which hike to reserve.
-Call function HikeList::printByHikeName() to print the hike chosen by the user.
-Call function HikeList::getPrice() and MemberList::getPoints() to print the discounted price, formatted with two decimal places.
-Call function Reservations::addReservation() to add the reservation to the list.
-*/
 
 void Interface::askToReserve(HikeList& HList, MemberList& MList, Reservations& Reserve)
 {
     char c;
-    cout << "Would you like to make a reservation? (y/n) ";
+    cout << "Would you like to make a reservation? (y/n)";
     cin >> c;
-    cout << endl;
-    
+
     if (c == 'y')
     {
         makeReservation(HList, MList, Reserve);
@@ -182,23 +169,27 @@ void Interface::askToReserve(HikeList& HList, MemberList& MList, Reservations& R
 
 int Interface::askIfMember(MemberList& MList)
 {
-    cout << "Are you a member? (y/n) ";
+    cout << "Are you a member? (y/n)" << endl;
     cin >> memberOrNot;
-    cout << endl;
-    
-    cout << "What is your Member ID number? ";
-    cin >> memberID;
-    cout << endl;
-    
-    cout << "What is your last name? ";
-    cin >> lName;
 
-    if (memberOrNot == 'y')
+    if (memberOrNot == 'y') {
+        cout << "What is your Member ID number? " << endl;
+        cin >> memberID;
+
+        cout << "What is your last name? " << endl;
+        cin >> lName;
         MList.printMember(memberID, lName);
-    else
-        addNewMember(MList);
-    return memberID;
+        return memberID;
+    }
+
+    else {
+        
+        return addNewMember(MList);
+    }
+
+   
 }
+
 
 
 
