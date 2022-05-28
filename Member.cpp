@@ -53,6 +53,11 @@ string Member::getLastName() const
     return lastName;
 }
 
+string Member::getFirstName() const	
+{	
+    return firstName;	
+}
+
 int Member::getPoints() const
 {
     return points;
